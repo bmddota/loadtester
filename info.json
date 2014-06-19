@@ -1,0 +1,16 @@
+{
+  "name": "loadtester",
+  "fullname": "LoadTester",
+  "version": "0.00.01",
+  "author": "BMD",
+  "authorimage": "",
+  "thumbnail": "",
+  "spreadimage": "",
+  "website": "https://github.com/bmddota/loadtester",
+  "subtitle": "A loadtester Dota 2 Mod for determining that users can load custom mods.",
+  "description": "",
+  "features": ["Load Testing"],
+  "playable": true,
+  "spreadvideo": "",
+  "isPublic": true
+}

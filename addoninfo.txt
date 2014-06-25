@@ -2,7 +2,7 @@
 {
 	"addonSteamAppID"	"816"
 	"addontitle"	"Checker"
-	"addonversion"	"0.00.01"
+	"addonversion"	"0.00.02"
 	"addontagline"	"Checker"
 	"addonauthor"	"BMD"
 	"addonSteamGroupName"	""

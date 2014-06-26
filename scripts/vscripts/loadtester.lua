@@ -352,6 +352,7 @@ function BareBonesGameMode:Think()
       endTime = Time() + 3,
       callback = function(reflex, args)
         BareBonesGameMode:CloseServer()
+        SendToConsole('disconnect')
       end})
     return
   end

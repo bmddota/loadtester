@@ -150,7 +150,7 @@ end
 
 function BareBonesGameMode:CloseServer()
   -- Just exit
-  SendToServerConsole('exit')
+  --SendToServerConsole('exit')
 end
 
 function BareBonesGameMode:PlayerConnect(keys)

@@ -2,7 +2,7 @@
 {
      addonSteamAppID         816
      addontitle              "Checker"
-     addonversion            0.00.20
+     addonversion            0.00.30
      addontagline            "Check your connection."
      addonauthor             "BMD"
      addonSteamGroupName     ""                                                 

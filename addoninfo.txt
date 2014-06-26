@@ -1,13 +1,9 @@
 "AddonInfo"
 {
-	"addonSteamAppID"	"816"
-	"addontitle"	"Checker"
-	"addonversion"	"0.00.02"
-	"addontagline"	"Checker"
-	"addonauthor"	"BMD"
-	"addonSteamGroupName"	""
-	"addonauthorSteamID"	""
-	"addonContent_Campaign"	"0"
-	"addonURL0"	"https://github.com/bmddota/loadtester/"
-	"addonDescription"	"Checker"
+     addonSteamAppID         816
+     addontitle              "Checker"
+     addonversion            0.00.10
+     addontagline            "Check your connection."
+     addonauthor             "BMD"
+     addonSteamGroupName     ""                                                 
 }

@@ -342,6 +342,8 @@ function BareBonesGameMode:Think()
   end
   
   if GameRules:State_Get() >= DOTA_GAMERULES_STATE_PRE_GAME then
+	SendToServerConsole('sv_cheats 1')
+	SendToServerConsole('dota_dev forcegamestart')
     -- End the game
     Say(nil, "You managed to load!!  Well Played!", false)
     GameRules:SetSafeToLeave( true )

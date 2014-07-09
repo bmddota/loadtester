@@ -35,10 +35,10 @@ function BareBonesGameMode:InitGameMode()
   -- Setup rules
   GameRules:SetHeroRespawnEnabled( false )
   GameRules:SetUseUniversalShopMode( true )
-  GameRules:SetSameHeroSelectionEnabled( false )
-  GameRules:SetHeroSelectionTime( 0.0 )
+  GameRules:SetSameHeroSelectionEnabled( true )
+  GameRules:SetHeroSelectionTime( 5.0 )
   GameRules:SetPreGameTime( 0.0)
-  GameRules:SetPostGameTime( 5.0 )
+  GameRules:SetPostGameTime( 0.0 )
   GameRules:SetTreeRegrowTime( 60.0 )
   GameRules:SetUseCustomHeroXPValues ( true )
   GameRules:SetGoldPerTick(0)
@@ -294,6 +294,8 @@ function BareBonesGameMode:getItemByName( hero, name )
   return nil
 end
 
+done = false
+
 function BareBonesGameMode:Think()
   -- If the game's over, it's over.
   if GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
@@ -341,20 +343,28 @@ function BareBonesGameMode:Think()
     end
   end
   
-  if GameRules:State_Get() >= DOTA_GAMERULES_STATE_PRE_GAME then
+  if GameRules:State_Get() >= DOTA_GAMERULES_STATE_PRE_GAME and not done then
+	done = true
 	SendToServerConsole('sv_cheats 1')
 	SendToServerConsole('dota_dev forcegamestart')
     -- End the game
     Say(nil, "You managed to load!!  Well Played!", false)
-    GameRules:SetSafeToLeave( true )
-    GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
-    BareBonesGameMode:CreateTimer('endGame', {
-      endTime = Time() + 3,
-      callback = function(reflex, args)
-        BareBonesGameMode:CloseServer()
-        SendToServerConsole('disconnect')
-      end})
-    return
+	BareBonesGameMode:CreateTimer('endtimer', {
+		useGameTime = true,
+		endTime = GameRules:GetGameTime() + 1,
+		callback = function(reflex, args)
+			GameRules:SetSafeToLeave( true )
+			GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
+			BareBonesGameMode:CreateTimer('endGame', {
+			  endTime = Time() + 1,
+			  callback = function(reflex, args)
+				BareBonesGameMode:CloseServer()
+				SendToServerConsole('disconnect')
+				--SendToServerConsole('exit')
+			  end})
+		end
+	})
+    --return
   end
 
   return THINK_TIME
